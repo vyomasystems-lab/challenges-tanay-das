@@ -8,7 +8,7 @@ VERILOG_SOURCES = $(PWD)/mux.v
 
 TOPLEVEL := mux          # design
 MODULE   := test_mux     # test
-
+SIM := questa
 include $(shell cocotb-config --makefiles)/Makefile.sim
 
 clean_all: clean
