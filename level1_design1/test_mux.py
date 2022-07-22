@@ -41,13 +41,13 @@ async def test_mux(dut):
 
        
     await Timer(2, units='ns')
-    i=30
+    i=13
     dut.sel.value = i
     await Timer(2, units='ns')
-    if(dut.inp30.value != dut.out.value):
+    if(dut.inp13.value != dut.out.value):
         dut._log.info(f'output missmatch due to this select value {i}')
-        dut._log.info(f'input value {dut.inp30.value}')
+        dut._log.info(f'input value {dut.inp13.value}')
         dut._log.info(f'output value {dut.out.value}')
-    assert dut.inp30.value == dut.out.value, "Wrong output"
+    assert dut.inp13.value == dut.out.value, "Wrong output"
     
     
