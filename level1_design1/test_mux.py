@@ -19,7 +19,7 @@ async def test_mux(dut):
     dut.inp9.value = 1
     dut.inp10.value = 3
     dut.inp11.value = 2
-    dut.inp12.value =1
+    dut.inp12.value =3
     dut.inp13.value = 2
     dut.inp14.value = 2
     dut.inp15.value = 3
@@ -41,13 +41,18 @@ async def test_mux(dut):
 
        
     await Timer(2, units='ns')
-    i=13
+    i=30
     dut.sel.value = i
     await Timer(2, units='ns')
-    if(dut.inp13.value != dut.out.value):
+    if(dut.inp30.value != dut.out.value):
         dut._log.info(f'output missmatch due to this select value {i}')
-        dut._log.info(f'input value {dut.inp13.value}')
+        dut._log.info(f'input value {dut.inp30.value}')
         dut._log.info(f'output value {dut.out.value}')
-    assert dut.inp13.value == dut.out.value, "Wrong output"
+
+    if(dut.inp30.value == dut.out.value):
+        dut._log.info(f'output match due to this select value {i}')
+        dut._log.info(f'input value {dut.inp30.value}')
+        dut._log.info(f'output value {dut.out.value}')
+    assert dut.inp30.value == dut.out.value, (f'Wrong output, expected output= {dut.inp30.value}, but output from the circuit= {dut.out.value}')
     
     
