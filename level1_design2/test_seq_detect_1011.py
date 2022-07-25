@@ -31,7 +31,7 @@ async def test_seq_bug1(dut):
     # 101101011 => output =1 at 5th cycle and 10th cycle
     # 0101011011 => output =1 at 8th cycle  in bugg design output is not observed 
 
-    seq = [0,1,0,1,0,1,1,0,1,1]
+    seq = [0,1,0,1,0,0,1,0,0,1]
     n = len(seq)
     for i in range(n):
         leng =0
