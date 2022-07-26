@@ -25,21 +25,22 @@ async def test_seq_bug1(dut):
     count = 0
 
    
-    # overlapping with non sequence
+   # overlapping with non sequence
     # 1011011 => output = 1 at 5th cycle
     # 10111011 => output =1 at 5th cycle and 9th cycle, in buggy design it only shows one output only at 5th cyle
     # 101101011 => output =1 at 5th cycle and 10th cycle
     # 0101011011 => output =1 at 8th cycle  in bugg design output is not observed 
-
-    seq = [0,1,0,1,0,0,1,0,0,1]
+    # 11011 => output = 1 at 6th cycle in buggy design output is not observed
+    seq = [1,0,1,1,1,0,1,1]
     n = len(seq)
+    leng =0
     for i in range(n):
-        leng =0
+        
         count+=1
         dut.inp_bit.value = seq[i]
         await FallingEdge(dut.clk)
         if(dut.seq_seen.value == 1):
             dut._log.info(f'Output = 1 at the count = {count}, with sequence parameter in binary= {dut.current_state.value}')
             leng+=1
-        # assert leng == 1 , (f'output number is not appripriate')    
+    assert leng == 2 , (f'output number is not appripriate')    
     
