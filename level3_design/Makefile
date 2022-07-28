@@ -4,10 +4,10 @@ TOPLEVEL_LANG ?= verilog
 
 PWD=$(shell pwd)
 
-VERILOG_SOURCES = $(PWD)/               # provide your design path
+VERILOG_SOURCES = $(PWD)/Single_Port_RAM_64x8bit.v               # provide your design path
 
-TOPLEVEL :=           # design file
-MODULE   :=     # test file
+TOPLEVEL := Single_Port_RAM_64x8bit       # design file
+MODULE   := Single_port_ram_test   # test file
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
 
