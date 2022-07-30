@@ -23,3 +23,4 @@ async def test_ram_bug1(dut):
     await FallingEdge(dut.clk) 
     dut._log.info((dut.q.value))
     dut._log.info(dut.ram[26].value)
+    assert dut.q.value==dut.ram[26].value, f"Output of the DUT are not matching with the stored data"
